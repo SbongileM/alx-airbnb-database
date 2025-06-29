@@ -62,3 +62,14 @@ CREATE TABLE review (
     CONSTRAINT fk_review_user FOREIGN KEY (user_id) REFERENCES user(user_id),
     CONSTRAINT valid_rating CHECK (rating BETWEEN 1 AND 5)
 );
+
+-- Message table
+CREATE TABLE message (
+    message_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+    sender_id UUID NOT NULL,
+    recipient_id UUID NOT NULL,
+    message_body TEXT NOT NULL,
+    sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_message_sender FOREIGN KEY (sender_id) REFERENCES user(user_id),
+    CONSTRAINT fk_message_recipient FOREIGN KEY (recipient_id) REFERENCES user(user_id)
+);
