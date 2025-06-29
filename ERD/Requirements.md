@@ -74,3 +74,7 @@
 
 - **User  -> Message** (One-to-Many): Mandatory (sender_id and recipient_id are FOREIGN KEYS referencing User(user_id))
 - **Message -> User** (Many-to-One): Mandatory (A message must have both a sender and recipient)
+
+
+### Entity Relationship Diagram
+<img src="ERD\Entity Relationship Diagram.png" alt="Entity Relationship Diagram" width="500" height="300">
