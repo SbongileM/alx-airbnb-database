@@ -50,3 +50,27 @@
 - *recipient_id*: Foreign Key, references User(user_id)
 - *message_body*: TEXT, NOT NULL
 - *sent_at*: TIMESTAMP, DEFAULT CURRENT_TIMESTAMP
+
+
+### Entity Relationships
+- **User -> Property** (One-to-Many): Optional unless the user is a host
+- **Property -> User** (Many-to-One): Mandatory (host_id is a FOREIGN KEY with NOT NULL implied since it references User(user_id))
+
+- **User -> Booking** (One-to-Many): Mandatory (A user must be associated with a booking)
+- **Booking -> User** (Many-to-One): Mandatory (user_id is a FOREIGN KEY referencing User(user_id))
+
+- **Propery -> Booking** (One-to-Many): Mandatory (A booking must be for a property)
+- **Booking -> Property** (Many-yo-One): Mandatory (property_id is a FOREIGN KEY referencing Property(property_id))
+
+
+- **Booking -> Payment** (One-to-One): Optional (A booking might not have a payment yet if status is pending)
+- **Payment -> Booking** (One-to-One): Mandatory (booking_id is a FOREIGN KEY referencing Booking(booking_id))
+
+- **User -> Review** (One-to-Many): Optional (A user doesn’t have to leave reviews)
+- **Review -> User**(Many-to-One): Mandatory (user_id is a FOREIGN KEY referencing User(user_id))
+
+- **Property -> Review** (One-to-Many): Optional (A property might not have reviews yet)
+- **Review -> Property** (Many-to-One): Mandatory (property_id is a FOREIGN KEY referencing Property(property_id))
+
+- **User  -> Message** (One-to-Many): Mandatory (sender_id and recipient_id are FOREIGN KEYS referencing User(user_id))
+- **Message -> User** (Many-to-One): Mandatory (A message must have both a sender and recipient)
