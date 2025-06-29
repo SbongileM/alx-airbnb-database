@@ -1,6 +1,6 @@
 -- 1. Insert Users (guests, hosts, and an admin)
 
-INSERT INTO "user" (user_id, first_name, last_name, email, password_hash, phone_number, role, created_at)
+INSERT INTO user (user_id, first_name, last_name, email, password_hash, phone_number, role, created_at)
 VALUES
     -- Admin
     ('f47ac10b-58cc-4372-a567-0e02b2c3d479', 'ALX', 'Admin', 'admin@alxproperties.com', '$2a$10$xJwL5v5Jz5U5Z5U5Z5U5Ze', '+27865421999', 'admin', NOW() - INTERVAL '1 year'),
@@ -14,4 +14,16 @@ VALUES
     ('1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p', 'Phumzile', 'Brown', 'pbrown@siyakhaconst.com', '@RandomConstructors1512', '+27755559876', 'guest', NOW() - INTERVAL '2 months'),
     ('6f5e4d3c-2b1a-9f8e-7d6c-5b4a3f2e1d0c', 'Mduduzi', 'Khumalo', 'mduduzimbulazi@.gmailcom', 'WenaMbulazi#2002', '+27625551234', 'guest', NOW() - INTERVAL '1 month');
 
+
+-- 2. Insert Properties
+
+INSERT INTO property (property_id, host_id, name, description, location, price_per_night, created_at)
+VALUES
+    -- Behive properties
+    ('8a7b6c5d-4e3f-2g1h-0i9j-8k7l6m5n4o3p2', '9a5e7d8b-2c4f-4a1d-b876-3e6f8a9b0c1d', 'Cozy Mountain Cabin', 'Beautiful log cabin with mountain views', 'Hazyview', 4250.00, NOW() - INTERVAL '8 months'),
+    ('3b4c5d6e-7f8g-9h0i-1j2k-3l4m5n6o7p8q9r', '9a5e7d8b-2c4f-4a1d-b876-3e6f8a9b0c1d', 'Downtown Loft', 'Modern loft in the heart of the city', 'Johannesburg, Braamfontein', 3000.00, NOW() - INTERVAL '6 months'),
+    
+    -- Twala properties
+    ('0d1e2f3g-4h5i-6j7k-8l9m-0n1o2p3q4r5s6t', '4e3a2b1c-0d9e-4f7a-b8c9-1d2e3f4a5b6c', 'Beachfront Villa', 'Luxury villa with private beach access', 'Durban, South Beach', 8099.00, NOW() - INTERVAL '5 months'),
+    ('5a6b7c8d-9e0f-1g2h-3i4j-5k6l7m8n9o0p1q', '4e3a2b1c-0d9e-4f7a-b8c9-1d2e3f4a5b6c', 'Beachside Cottage', 'Charming cottage with garden', 'CapeTown, Llandudno', 5999.00, NOW() - INTERVAL '4 months');
 
