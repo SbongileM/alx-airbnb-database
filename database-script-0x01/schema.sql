@@ -23,7 +23,7 @@ CREATE TABLE property (
     price_per_night DECIMAL(10, 2) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    CONSTRAINT FK_property_host FOREIGN KEY (host_id) REFERENCES "user"(user_id)
+    CONSTRAINT FK_property_host FOREIGN KEY (host_id) REFERENCES user(user_id)
 );
 
 -- Booking table
@@ -36,7 +36,7 @@ CREATE TABLE booking (
     status ENUM('pending', 'confirmed', 'canceled') NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT FK_booking_property FOREIGN KEY (property_id) REFERENCES property(property_id),
-    CONSTRAINT FK_booking_user FOREIGN KEY (user_id) REFERENCES "user"(user_id),
+    CONSTRAINT FK_booking_user FOREIGN KEY (user_id) REFERENCES user(user_id),
     CONSTRAINT valid_booking_dates CHECK (end_date > start_date)
 );
 
@@ -50,3 +50,15 @@ CREATE TABLE payment (
     CONSTRAINT fk_payment_booking FOREIGN KEY (booking_id) REFERENCES booking(booking_id)
 );
 
+-- Review table
+CREATE TABLE review (
+    review_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+    property_id UUID NOT NULL,
+    user_id UUID NOT NULL,
+    rating INTEGER NOT NULL,
+    comment TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_review_property FOREIGN KEY (property_id) REFERENCES property(property_id),
+    CONSTRAINT fk_review_user FOREIGN KEY (user_id) REFERENCES user(user_id),
+    CONSTRAINT valid_rating CHECK (rating BETWEEN 1 AND 5)
+);
