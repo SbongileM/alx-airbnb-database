@@ -73,3 +73,15 @@ CREATE TABLE message (
     CONSTRAINT fk_message_sender FOREIGN KEY (sender_id) REFERENCES user(user_id),
     CONSTRAINT fk_message_recipient FOREIGN KEY (recipient_id) REFERENCES user(user_id)
 );
+
+-- Indexes for performance optimization
+CREATE INDEX idx_user_email ON user(email);
+CREATE INDEX idx_property_host ON property(host_id);
+CREATE INDEX idx_booking_property ON booking(property_id);
+CREATE INDEX idx_booking_user ON booking(user_id);
+CREATE INDEX idx_booking_dates ON booking(start_date, end_date);
+CREATE INDEX idx_payment_booking ON payment(booking_id);
+CREATE INDEX idx_review_property ON review(property_id);
+CREATE INDEX idx_review_user ON review(user_id);
+CREATE INDEX idx_message_sender ON message(sender_id);
+CREATE INDEX idx_message_recipient ON message(recipient_id);
