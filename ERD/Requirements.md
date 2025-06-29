@@ -77,4 +77,4 @@
 
 
 ### Entity Relationship Diagram
-<img src="ERD\Entity Relationship Diagram.png" alt="Entity Relationship Diagram" width="500" height="300">
+<img src="Entity Relationship Diagram.png" alt="Entity Relationship Diagram" width="500" height="300">
