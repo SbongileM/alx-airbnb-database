@@ -39,3 +39,14 @@ CREATE TABLE booking (
     CONSTRAINT FK_booking_user FOREIGN KEY (user_id) REFERENCES "user"(user_id),
     CONSTRAINT valid_booking_dates CHECK (end_date > start_date)
 );
+
+-- Payment table
+CREATE TABLE payment (
+    payment_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+    booking_id UUID NOT NULL,
+    amount DECIMAL(10, 2) NOT NULL,
+    payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    payment_method ENUM('credit_card', 'paypal', 'stripe') NOT NULL,
+    CONSTRAINT fk_payment_booking FOREIGN KEY (booking_id) REFERENCES booking(booking_id)
+);
+
