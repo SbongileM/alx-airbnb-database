@@ -35,7 +35,7 @@ VALUES
 INSERT INTO booking (booking_id, property_id, user_id, start_date, end_date, status, created_at)
 VALUES
     -- Past bookings
-    ('6b7c8d9e-0f1g-2h3i-4j5k-6l7m8n9o0p1q2r3s', '8a7b6c5d-4e3f-2g1h-0i9j-8k7l6m5n4o3p2', '1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p', NOW() - INTERVAL '2 months', NOW() - INTERVAL '1 month 28 days', 'confirmed', NOW() - INTERVAL '2 months'),
+    ('6b7c8d9e-0f1g-2h3i-4j5k-6l7m8n9o0p1q2r3s', '8a7b6c5d-4e3f-2g1h-0i9j-8k7l6m5n4o3p2', '1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p', NOW() - INTERVAL '2 months', NOW() - INTERVAL '1 month', 'confirmed', NOW() - INTERVAL '2 months'),
     ('3e4f5g6h-7i8j-9k0l-1m2n-3o4p5q6r7s8t9u0v', '5a6b7c8d-9e0f-1g2h-3i4j-5k6l7m8n9o0p1q', '6f5e4d3c-2b1a-9f8e-7d6c-5b4a3f2e1d0c', NOW() - INTERVAL '1 month', NOW() - INTERVAL '3 weeks', 'cancelled', NOW() - INTERVAL '1 month'),
     
     -- Current bookings
@@ -74,3 +74,12 @@ VALUES
     ('0e1f2g3h-4i5j-6k7l-8m9n-0o1p2q3r4s5t6u', '8a7b6c5d-4e3f-2g1h-0i9j-8k7l6m5n4o3p2', '1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p', 5, 'The cabin was absolutely perfect! Beautiful views and cozy interior.', NOW() - INTERVAL '1 month'),
     ('8b9c0d1e-2f3g-4h5i-6j7k-8l9m0n1o2p3q4r', '0d1e2f3g-4h5i-6j7k-8l9m-0n1o2p3q4r5s6t', '1c2d3e4f-5g6h-7i8j-9k0l-1m2n3o4p5q6r7s8t', 4, 'Amazing location right on the beach. The vibe is good for romantic vacations.', NOW() - INTERVAL '1 weeks');
     
+
+-- 6. Insert Messages
+
+INSERT INTO message (message_id, sender_id, recipient_id, message_body, sent_at)
+VALUES
+    ('2e3f4g5h-6i7j-8k9l-0m1n-2o3p4q5r6s7t8u', '1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p', '9a5e7d8b-2c4f-4a1d-b876-3e6f8a9b0c1d', 'Hi Sarah, is the cabin pet-friendly?', NOW() - INTERVAL '2 months'),
+    ('9b8c7d6e-5f4g-3h2i-1j0k-9l8m7n6o5p4q3r', '9a5e7d8b-2c4f-4a1d-b876-3e6f8a9b0c1d', '1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p', 'Hi Phumzile. Yes, we allow small dogs with a R100 pet fee.', NOW() - INTERVAL '2 months'),
+    ('4c5d6e7f-8g9h-0i1j-2k3l-4m5n6o7p8q9r0s', '1c2d3e4f-5g6h-7i8j-9k0l-1m2n3o4p5q6r7s8t', '4e3a2b1c-0d9e-4f7a-b8c9-1d2e3f4a5b6c', 'What time is check-in at the villa?', NOW() - INTERVAL '1 week'),
+    ('1f2e3d4c-5b6a-7g8h-9i0j-1k2l3m4n5o6p7q', '4e3a2b1c-0d9e-4f7a-b8c9-1d2e3f4a5b6c', '1c2d3e4f-5g6h-7i8j-9k0l-1m2n3o4p5q6r7s8t', 'Check-in is at 3 PM. Let me know if you need an early arrival.', NOW() - INTERVAL '5 days');
